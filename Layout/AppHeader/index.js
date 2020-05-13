@@ -5,13 +5,14 @@ import {connect} from 'react-redux';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import HeaderLogo from './Components/Logo';
+import HeaderLogo from '../AppLogo';
 
-import HeaderMenus from './Components/HeaderMenu';
-import I18nMenu from './Components/I18nMenu';
-import Login from './Components/Login'
+import SearchBox from './Components/SearchBox';
+import MegaMenu from './Components/MegaMenu';
+import UserBox from './Components/UserBox';
+import HeaderRightDrawer from "./Components/HeaderRightDrawer";
 
-// import HeaderRightDrawer from "../../Layout/AppHeader/Components/HeaderRightDrawer";
+import HeaderDots from "./Components/HeaderDots";
 
 class Header extends React.Component {
     render() {
@@ -38,12 +39,13 @@ class Header extends React.Component {
                         {'header-mobile-open': enableMobileMenuSmall},
                     )}>
                         <div className="app-header-left">
+                            <SearchBox/>
+                            <MegaMenu/>
                         </div>
                         <div className="app-header-right">
-                            {/* <HeaderRightDrawer/> */}
-                            <HeaderMenus/>
-                            <I18nMenu/>
-                            <Login/>
+                            <HeaderDots/>
+                            <UserBox/>
+                            <HeaderRightDrawer/>
                         </div>
                     </div>
                 </ReactCSSTransitionGroup>
