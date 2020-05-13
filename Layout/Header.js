@@ -1,18 +1,12 @@
 import React, {Fragment} from 'react';
 import cx from 'classnames';
-
 import {connect} from 'react-redux';
-
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import HeaderLogo from '../AppLogo';
-
-import SearchBox from './Components/SearchBox';
-import MegaMenu from './Components/MegaMenu';
-import UserBox from './Components/UserBox';
-import HeaderRightDrawer from "./Components/HeaderRightDrawer";
-
-import HeaderDots from "./Components/HeaderDots";
+import HeaderLogo from './Components/Logo';
+import HeaderMenus from './Components/HeaderMenu';
+import I18nMenu from './Components/I18nMenu';
+import Login from './Components/Login'
 
 class Header extends React.Component {
     render() {
@@ -31,7 +25,6 @@ class Header extends React.Component {
                     transitionAppearTimeout={1500}
                     transitionEnter={false}
                     transitionLeave={false}>
-
                     <HeaderLogo/>
 
                     <div className={cx(
@@ -39,13 +32,11 @@ class Header extends React.Component {
                         {'header-mobile-open': enableMobileMenuSmall},
                     )}>
                         <div className="app-header-left">
-                            <SearchBox/>
-                            <MegaMenu/>
                         </div>
                         <div className="app-header-right">
-                            <HeaderDots/>
-                            <UserBox/>
-                            <HeaderRightDrawer/>
+                            <HeaderMenus/>
+                            <I18nMenu/>
+                            <Login/>
                         </div>
                     </div>
                 </ReactCSSTransitionGroup>
@@ -56,7 +47,6 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({
     enableHeaderShadow: state.ThemeOptions.enableHeaderShadow,
-    closedSmallerSidebar: state.ThemeOptions.closedSmallerSidebar,
     headerBackgroundColor: state.ThemeOptions.headerBackgroundColor,
     enableMobileMenuSmall: state.ThemeOptions.enableMobileMenuSmall,
 });
