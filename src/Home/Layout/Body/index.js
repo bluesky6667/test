@@ -27,22 +27,28 @@ class Body extends React.Component {
     }
 
     handelScroll = e => {
-        const currPos = document.documentElement.scrollTop;
+        const domEl = document.documentElement;
+        const currPos = domEl.scrollTop;
         const menusPosition = this.state.menusPosition;
         const menus = this.props.menus;
+        const {
+            selectMenu,
+            setEnableTopBtn
+        } = this.props;
         for (let i = 0, len = menusPosition.length; i < len; i++) {
             if ( currPos < menusPosition[i] ) {
-                this.props.selectMenu(menus[i-1].id);
+                selectMenu(menus[i-1].id);
                 break;
             } else if ( menusPosition[len-1] <= currPos ||
-                Math.ceil(window.innerHeight + currPos) >= document.documentElement.offsetHeight ) {
-                this.props.selectMenu(menus[len-1].id);
+                Math.ceil(window.innerHeight + currPos) >= domEl.offsetHeight ) {
+                    selectMenu(menus[len-1].id);
                 break;
             }
         }
         this.setState((state, props) => ({
-            scrollPosition: document.documentElement.scrollTop
+            scrollPosition: currPos
         }));
+        setEnableTopBtn(currPos > 0);
     }
 
     render() {
@@ -72,7 +78,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    selectMenu: (selectedMenu) => dispatch(menuActions.selectMenu(selectedMenu))
+    selectMenu: (selectedMenu) => dispatch(menuActions.selectMenu(selectedMenu)),
+    setEnableTopBtn: (enableTopBtn) => dispatch(menuActions.setEnableTopBtn(enableTopBtn)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Body);
