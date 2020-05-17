@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import cx from 'classnames';
 import {connect} from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -16,7 +16,7 @@ class Header extends React.Component {
             enableHeaderShadow
         } = this.props;
         return (
-            <Fragment>
+            <>
                 <ReactCSSTransitionGroup
                     component="div"
                     className={cx("app-header", headerBackgroundColor, {'header-shadow': enableHeaderShadow})}
@@ -41,7 +41,7 @@ class Header extends React.Component {
                         </div>
                     </div>
                 </ReactCSSTransitionGroup>
-            </Fragment>
+            </>
         );
     }
 }

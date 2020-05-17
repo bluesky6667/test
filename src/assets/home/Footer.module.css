@@ -1,0 +1,7 @@
+.logo-footer {
+    background: #fff url(./images/pnt_ci-300x154.png) no-repeat center;
+    background-size: contain;
+    width: 80px;
+    height: 40px;
+    margin-right: 0.5rem;
+}

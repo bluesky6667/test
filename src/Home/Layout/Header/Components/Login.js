@@ -2,6 +2,10 @@ import React from 'react';
 import {Button} from "reactstrap";
 
 class Login extends React.Component {
+    handleClick = () => {
+        window.open('https://asia1-wms.indoorplus.io/auth/login.do');
+    }
+
     render() {
         return (
             <>
@@ -11,7 +15,7 @@ class Login extends React.Component {
                     borderColor: '#e67e22',
                     color: '#212529',
                     fontWeight: 'bold'
-                }} active>로그인</Button>
+                }} active onClick={this.handleClick}>로그인</Button>
             </>
         )
     }

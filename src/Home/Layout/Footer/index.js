@@ -6,7 +6,7 @@ import { IoLogoFacebook,
     IoLogoTwitter,
     IoLogoTumblr } from "react-icons/io";
 import LogoWrapper from "./Components/LogoWrapper";
-import styles from '../../../assets/custom/Home.module.css';
+import styles from '../../../assets/home/Footer.module.css';
 
 class Footer extends React.Component {
     render() {
@@ -15,7 +15,7 @@ class Footer extends React.Component {
                 <div className="app-footer" style={{backgroundColor: '#e67e22'}}>
                     <div className="app-footer__inner">
                         <div className="app-footer-left">
-                            <div className={styles.logofooter}></div>
+                            <div className={styles['logo-footer']}></div>
                             <div>
                                 <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '0px'}}>IndoorPlus+는</h6>
                                 <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '0px'}}><b style={{color: '#212529'}}>People&Technology</b>의 제품입니다.</h6>

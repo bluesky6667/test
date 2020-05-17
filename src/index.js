@@ -6,9 +6,14 @@ import * as serviceWorker from './serviceWorker';
 
 import { HashRouter } from 'react-router-dom';
 import './assets/base.scss';
-import Main from './Home/Main';
+import Main from './Home';
 import configureStore from './config/configureStore';
 import { Provider } from 'react-redux';
+import axios from 'axios';
+
+
+axios.defaults.baseURL = process.env.REACT_APP_API_REQUEST_URL;
+axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8';
 
 const store = configureStore();
 const rootElement = document.getElementById('root');
@@ -27,8 +32,8 @@ const renderApp = Component => {
 renderApp(Main);
 
 if (module.hot) {
-    module.hot.accept('./Home/Main', () => {
-        const NextApp = require('./Home/Main').default;
+    module.hot.accept('./Home', () => {
+        const NextApp = require('./Home').default;
         renderApp(NextApp);
     });
 }

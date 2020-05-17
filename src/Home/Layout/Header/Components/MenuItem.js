@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from '../../../../assets/custom/Home.module.css';
+import styles from '../../../../assets/home/Header.module.css';
+import cx from 'classnames';
 import * as menuActions from "../../../../reducers/Menus";
 import {connect} from "react-redux";
 
 class MenuItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     handleSelectMenu = (selectedMenu) => {
         this.props.selectMenu(selectedMenu);
     }
@@ -23,7 +21,7 @@ class MenuItem extends React.Component {
             <>
                 <a
                     href={`#${menuId}`} menuid={menuId}
-                    className={`nav-link ${active && styles.active} ${styles.headermenu}`}
+                    className={cx('nav-link', (active && styles.active), styles['header-menu'])}
                     onClick={() => handleSelectMenu(menuId)}
                 >{menuLabel}</a>
             </>

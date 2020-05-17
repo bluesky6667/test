@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import styles from "../../../../assets/custom/Home.module.css";
+import styles from "../../../../assets/home/Header.module.css";
 import * as menuActions from "../../../../reducers/Menus";
 
 class TopButton extends React.Component {

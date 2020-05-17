@@ -1,5 +1,5 @@
-import React, {lazy, Suspense} from 'react';
-import styles from "../../../assets/custom/Home.module.css";
+import React from 'react';
+import styles from "../../../assets/home/Body.module.css";
 import cx from 'classnames';
 import {connect} from "react-redux";
 import * as menuActions from "../../../reducers/Menus";
@@ -28,7 +28,7 @@ class Body extends React.Component {
 
     handelScroll = e => {
         const domEl = document.documentElement;
-        const currPos = domEl.scrollTop;
+        const currPos = Math.ceil(domEl.scrollTop);
         const menusPosition = this.state.menusPosition;
         const menus = this.props.menus;
         const {
@@ -40,7 +40,7 @@ class Body extends React.Component {
                 selectMenu(menus[i-1].id);
                 break;
             } else if ( menusPosition[len-1] <= currPos ||
-                Math.ceil(window.innerHeight + currPos) >= domEl.offsetHeight ) {
+                (window.innerHeight + currPos) >= domEl.offsetHeight ) {
                     selectMenu(menus[len-1].id);
                 break;
             }
@@ -53,17 +53,16 @@ class Body extends React.Component {
 
     render() {
         const {
-            menus,
-            selectedMenu
+            menus
         } = this.props;
         const pages = menus.map(menu =>
-            <section id={menu.id} key={menu.id} className={cx(styles.page, (selectedMenu === menu.id ? styles.active : ''))} >
+            <section id={menu.id} key={menu.id} className={cx(styles.page)} >
                 <MappedPage menuId={menu.id}/>
             </section>
         );
         return (
             <>
-                <div className={styles.pagecontainer}>
+                <div>
                     {pages}
                     <TopButton></TopButton>
                 </div>

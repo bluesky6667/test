@@ -12,17 +12,44 @@ class Noti extends React.Component {
         };
     }
     componentDidMount() {
+        // const res = this.getNotiList(1);
         // this.setState({notiList: this.getNotiList(1)});
         this.setState({notiList: makeData()});
     }
 
     async getNotiList(pageNo) {
-        const res = await axios.get('/notice/list', {
+        // const res = await axios({
+        //     method: 'post',
+        //     url: 'http://13.125.33.143:8401/notice/list',
+        //     data: {
+        //         page: pageNo
+        //     }
+        // });
+        // const res = await axios.get('http://13.125.33.143:8401/notice/list', {
+        //     params: {
+        //         page: pageNo
+        //     }
+        // });
+        // const res = await axios({
+        //     method: 'get',
+        //     url: 'http://13.125.33.143:8401/notice/list',
+        //     data: {}
+        // });
+        const res = await axios.get('/notice/form', {
+            // headers: {
+            //     'Access-Control-Allow-Credentials': 'true',
+            //     'Access-Control-Allow-Headers': '*',
+            //     'Access-Control-Allow-Methods': 'POST, GET, PUT, OPTIONS, DELETE',
+            //     'Access-Control-Allow-Origin': '*',
+            //     'Access-Control-Max-Age': '3600'
+            // },
             params: {
-                pageNo
+                noticeNum: 4
             }
         });
-        return res.data;
+
+        // return await res.json();
+        return res;
     }
 
     render() {
